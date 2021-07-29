@@ -76,13 +76,13 @@ export default {
   background-color: rgb(231, 231, 231);
 
   border-bottom: 1px solid #aaa;
-  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+  
   transition: 0.5s ease-in-out;
 }
 
 .Header:hover {
   background-color: rgb(255, 227, 227);
-  
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 
