@@ -1,10 +1,15 @@
 <template>
-  <div class="Container">
+  <div class="container">
     <transition name="fade" appear>
-      <div v-if="showModal" class="Modal">
+      <div v-if="showModal" class="modal">
       <div class="modal-box">
         <h3 class="modal-title">수정할 값을 입력해주세요!</h3>
-        <input type="number" class="modal-input" v-model="modalValue" />
+        <input 
+          type="number" 
+          class="modal-input" 
+          v-model="modalValue" 
+          @keyup.enter="changeTable"
+        />
 
         <button class="apply" @click="changeTable">적용</button>
         <button class="close" @click="showModal = false">닫기</button>
@@ -19,17 +24,22 @@
       </div>
     </transition>
 
-    <div class="Header">
+    <div class="header">
       <h1 class="title">Multiply Table</h1>
 
       <div class="input-section">
-        <input class="input" type="number" v-model="number" />
+        <input
+          class="input" 
+          type="number" 
+          v-model="number" 
+          @keyup.enter="addTable"
+        />
         <button class="submit" @click="addTable">+ 추가</button>
       </div>
     </div>
     <div class="Body">
       <transition-group tag="div" name="plump" class="Body">
-        <div class="card" v-for="(number, index) in array" v-bind:key="number">
+        <div class="card" v-for="(number, index) in array" v-bind:key="number" >
           <div class="card-header flex">
             <h3 class="x-level">{{ number }}단</h3>
 
@@ -106,7 +116,7 @@ export default {
       if(this.array.includes(this.modalValue))
         return;
 
-      console.log("옿" + this.modalIndex);
+      console.log("modalIndex" + this.modalIndex);
       this.array.splice(this.modalIndex, 1, this.modalValue);
 
       this.closeModal = true;
@@ -126,7 +136,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+@import '../css/animation.css';
+@import '../css/toast.css';
+@import '../css/modal.css';
 
 @font-face {
   font-family: "RixYeoljeongdo_Regular";
@@ -141,59 +153,6 @@ body {
   overflow-y: scroll;
 }
 
-.Modal {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-}
-
-.modal-box {
-  width: 450px;
-  height: 250px;
-
-  margin: 0 auto;
-  margin-top: 200px;
-
-  border-radius: 15px;
-  background-color: #fff;
-  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
-}
-
-.apply {
-  color: blue;
-  position: absolute;
-
-  width: 225px;
-  height: 50px;
-
-  margin-top: 45px;
-
-  border: none;
-
-  border-radius: 0 0 0 10px;
-
-  cursor: pointer;
-  background-color: rgb(237, 234, 255);
-
-  transition: 0.2s ease-in-out;
-}
-
-.apply:hover {
-  color: white;
-
-  background-color: rgb(71, 88, 243);
-  transform: scale(1.05);
-
-  border-radius: 13px;
-  z-index: 99;
-}
 
 .modify{
   width: 100px;
@@ -215,125 +174,7 @@ body {
   z-index: 99;
 }
 
-/* for modal */
-.close {
-  color: rgb(255, 67, 67);
-  position: absolute;
-
-  width: 225px;
-  height: 50px;
-
-  margin-top: 45px;
-
-  float: right;
-  border: none;
-
-  margin-left: 225px;
-
-  border-radius: 0 0 10px 0;
-
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-}
-
-.close:hover {
-  color: white;
-
-  background-color: rgb(243, 71, 71);
-  transform: scale(1.05);
-
-  border-radius: 13px;
-  z-index: 99;
-}
-
-.modal-title {
-  display: inline-block;
-
-  text-align: center;
-  margin-top: 50px;
-  margin-left: 115px;
-}
-
-.modal-input {
-  display: block;
-  margin: 0 auto;
-
-  margin-top: 50px;
-
-  width: 250px;
-  height: 35px;
-
-  border-radius: 30px;
-  border: none;
-
-  background-color: rgb(233, 233, 233);
-}
-
-.Toast {
-  position: absolute;
-  display: flex;
-
-  top: 10px;
-  right: 10px;
-
-  width: 300px;
-  height: 80px;
-
-  border-radius: 15px;
-  background-color: rgb(255, 78, 78);
-
-  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease-in-out;
-}
-
-/* fade effect */
-.fade-enter-active,
-.fade-leave-active{
-  transition: 0.15s ease-in-out;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* fadeDrop effect */
-.fadeDrop-enter-active {
-  transition: 0.15s ease-in-out;
-  transform: translateY(-200px);
-}
-.fadeDrop-leave-active {
-  transition: 0.15s ease-in-out;
-}
-
-.fadeDrop-enter,
-.fadeDrop-leave-to {
-  opacity: 0;
-}
-
-/* plump effect */
-.plump-enter-from {
-  opacity: 0;
-  transform: scale(1);
-}
-
-.plump-enter-to {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.plump-enter-active {
-  transition: all 0.4s ease-in-out;
-}
-
-.msg {
-  color: white;
-
-  margin-left: 35px;
-  line-height: 80px;
-}
-
-.Container {
+.container {
   width: 100vw;
   height: 100vh;
 }
@@ -342,7 +183,7 @@ body {
   display: flex;
 }
 
-.Header {
+.header {
   width: 100%;
   height: 200px;
 
@@ -353,7 +194,7 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-.Header:hover {
+.header:hover {
   background-color: rgb(255, 227, 227);
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
 }
