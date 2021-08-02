@@ -7,11 +7,14 @@
 <script>
 import MultiplyTable from './components/MultiplyTable.vue'
 
+
 export default {
   name: 'App',
   components: {
-    MultiplyTable
-  }
+    MultiplyTable,
+  },
+  
+
 }
 </script>
 
@@ -20,4 +23,5 @@ export default {
     margin: 0;
     padding: 0;
   }
+
 </style>
