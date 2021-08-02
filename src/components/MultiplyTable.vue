@@ -152,7 +152,6 @@ body {
   overflow-y: scroll;
 }
 
-
 .modify{
   width: 100px;
   height: 35px;
