@@ -105,7 +105,6 @@ export default {
 
     //구구단 삭제
     deleteTable: function(index) {
-      console.log(index);
       this.array.splice(index, 1);
     },
 
@@ -116,7 +115,6 @@ export default {
       if(this.array.includes(this.modalValue))
         return;
 
-      console.log("modalIndex" + this.modalIndex);
       this.array.splice(this.modalIndex, 1, this.modalValue);
 
       this.closeModal = true;
@@ -124,11 +122,8 @@ export default {
 
     //모달 열기
     openModal: function(index) {
-      console.log("모달 열림");
       this.showModal = true;
-
       this.modalIndex = index;
-      console.log(this.modalIndex)
     },
   },
 };
