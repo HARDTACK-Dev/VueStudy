@@ -422,6 +422,11 @@ body {
   
 }
 
+.x-level{
+  line-height: 40px;
+  margin-left: 20px;
+}
+
 .card:hover{
   cursor: pointer;
 
