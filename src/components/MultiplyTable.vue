@@ -2,21 +2,20 @@
   <div class="container">
     <transition name="fade" appear>
       <div v-if="showModal" class="modal">
-      <div class="modal-box">
-        <h3 class="modal-title">수정할 값을 입력해주세요!</h3>
-        <input 
-          type="number" 
-          class="modal-input" 
-          v-model="modalValue" 
-          @keyup.enter="changeTable"
-        />
+        <div class="modal-box">
+          <h3 class="modal-title">수정할 값을 입력해주세요!</h3>
+          <input
+            type="number"
+            class="modal-input"
+            v-model="modalValue"
+            @keyup.enter="changeTable"
+          />
 
-        <button class="apply" @click="changeTable">적용</button>
-        <button class="close" @click="showModal = false">닫기</button>
+          <button class="apply" @click="changeTable">적용</button>
+          <button class="close" @click="showModal = false">닫기</button>
+        </div>
       </div>
-    </div>
     </transition>
-    
 
     <transition name="fadeDrop" appear>
       <div v-if="showToast" class="Toast">
@@ -29,9 +28,9 @@
 
       <div class="input-section">
         <input
-          class="input" 
-          type="number" 
-          v-model="number" 
+          class="input"
+          type="number"
+          v-model="number"
           @keyup.enter="addTable"
         />
         <button class="submit" @click="addTable">+ 추가</button>
@@ -39,7 +38,7 @@
     </div>
     <div class="Body">
       <transition-group tag="div" name="plump" class="Body">
-        <div class="card" v-for="(number, index) in array" v-bind:key="number" >
+        <div class="card" v-for="(number, index) in array" v-bind:key="number">
           <div class="card-header flex">
             <h3 class="x-level">{{ number }}단</h3>
 
@@ -110,10 +109,8 @@ export default {
 
     //구구단 수정
     changeTable: function() {
-      if(this.modalValue == null)
-        return;
-      if(this.array.includes(this.modalValue))
-        return;
+      if (this.modalValue == null) return;
+      if (this.array.includes(this.modalValue)) return;
 
       this.array.splice(this.modalIndex, 1, this.modalValue);
 
@@ -130,9 +127,9 @@ export default {
 </script>
 
 <style scoped>
-@import '../css/animation.css';
-@import '../css/toast.css';
-@import '../css/modal.css';
+@import "../css/animation.css";
+@import "../css/toast.css";
+@import "../css/modal.css";
 
 @font-face {
   font-family: "RixYeoljeongdo_Regular";
@@ -147,7 +144,7 @@ body {
   overflow-y: scroll;
 }
 
-.modify{
+.modify {
   width: 100px;
   height: 35px;
 
@@ -157,7 +154,7 @@ body {
   background-color: rgb(219, 218, 218);
 }
 
-.modify:hover{
+.modify:hover {
   color: white;
 
   background-color: rgb(195, 224, 189);
@@ -253,15 +250,14 @@ body {
 
   border-radius: 10px;
   transition: 0.1s ease-in-out;
-  
 }
 
-.x-level{
+.x-level {
   line-height: 40px;
   margin-left: 20px;
 }
 
-.card:hover{
+.card:hover {
   cursor: pointer;
 
   box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.1);
@@ -298,8 +294,6 @@ body {
 }
 
 .btn {
- 
-
   margin: 1px 2px;
 
   text-align: center;
@@ -322,7 +316,7 @@ body {
   color: white;
 
   width: 35px;
-  height: 35px; 
+  height: 35px;
 
   background-color: rgb(248, 51, 51);
 
