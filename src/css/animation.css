@@ -1,0 +1,39 @@
+/* fade effect */
+.fade-enter-active,
+.fade-leave-active {
+  transition: 0.15s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* fadeDrop effect */
+.fadeDrop-enter-active {
+  transition: 0.15s ease-in-out;
+  transform: translateY(-200px);
+}
+.fadeDrop-leave-active {
+  transition: 0.15s ease-in-out;
+}
+
+.fadeDrop-enter,
+.fadeDrop-leave-to {
+  opacity: 0;
+}
+
+/* plump effect */
+.plump-enter-from {
+  opacity: 0;
+  transform: scale(1);
+}
+
+.plump-enter-to {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.plump-enter-active {
+  transition: all 0.4s ease-in-out;
+}
