@@ -6,7 +6,7 @@
         <h3 class="modal-title">수정할 값을 입력해주세요!</h3>
         <input type="number" class="modal-input" v-model="modalValue" />
 
-        <button class="apply" @click="changeTable(index)">수정</button>
+        <button class="apply" @click="changeTable">적용</button>
         <button class="close" @click="showModal = false">닫기</button>
       </div>
     </div>
@@ -34,7 +34,7 @@
             <h3 class="x-level">{{ number }}단</h3>
 
             <div class="buttons flex">
-              <div class="btn modify" @click="openModal">수정</div>
+              <div class="btn modify" @click="openModal(index)">수정</div>
               <div class="btn delete" @click="deleteTable(index)">X</div>
             </div>
           </div>
@@ -62,6 +62,8 @@ export default {
 
       showModal: false,
       modalValue: null,
+
+      modalIndex: null,
     };
   },
 
@@ -98,22 +100,25 @@ export default {
     },
 
     //구구단 수정
-    changeTable: function(index) {
+    changeTable: function() {
       if(this.modalValue == null)
         return;
-      if(this.array.includes(this.number))
+      if(this.array.includes(this.modalValue))
         return;
 
-      console.log("옿" + index);
-      this.array.splice(index, 1, this.modalValue);
+      console.log("옿" + this.modalIndex);
+      this.array.splice(this.modalIndex, 1, this.modalValue);
 
       this.closeModal = true;
     },
 
     //모달 열기
-    openModal: function() {
+    openModal: function(index) {
       console.log("모달 열림");
       this.showModal = true;
+
+      this.modalIndex = index;
+      console.log(this.modalIndex)
     },
   },
 };
@@ -191,9 +196,23 @@ body {
 }
 
 .modify{
+  width: 100px;
+  height: 35px;
+
+  line-height: 35px;
   border-radius: 30px;
 
   background-color: rgb(219, 218, 218);
+}
+
+.modify:hover{
+  color: white;
+
+  background-color: rgb(195, 224, 189);
+  transform: scale(1.05);
+
+  border-radius: 13px;
+  z-index: 99;
 }
 
 /* for modal */
@@ -440,8 +459,7 @@ body {
 }
 
 .btn {
-  width: 35px;
-  height: 35px;
+ 
 
   margin: 1px 2px;
 
@@ -463,6 +481,10 @@ body {
 
 .delete {
   color: white;
+
+  width: 35px;
+  height: 35px; 
+
   background-color: rgb(248, 51, 51);
 
   border-radius: 300px;
