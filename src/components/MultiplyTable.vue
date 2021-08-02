@@ -79,7 +79,7 @@ export default {
   methods: {
     //구구단 추가
     addTable: function() {
-      if (this.number == null || "") {
+      if (this.number === null || this.number.length === 0) {
         this.showToast = true;
         this.toastMsg = "숫자를 입력해주세요";
 
@@ -99,6 +99,7 @@ export default {
 
         return;
       }
+      console.log(this.number);
       this.array.push(this.number);
     },
 
