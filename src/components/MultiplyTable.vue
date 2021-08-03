@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <transition name="fade" appear>
-      <div v-if="showModal" class="modal">
+      <div v-show="showModal" class="modal">
         <div class="modal-box">
           <h3 class="modal-title">수정할 값을 입력해주세요!</h3>
           <input
@@ -19,7 +19,7 @@
     </transition>
 
     <transition name="fadeDrop" appear>
-      <div v-if="showToast" class="toast">
+      <div v-show="showToast" class="toast">
         <p class="msg">{{ toastMsg }}</p>
       </div>
     </transition>
