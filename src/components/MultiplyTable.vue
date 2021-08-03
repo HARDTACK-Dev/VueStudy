@@ -88,11 +88,11 @@ export default {
       const { insertNumber, tableExist } = this.error;
 
       if (this.number === null || this.number.length === 0) {
-        this.activeModal(insertNumber);
+        this.modalEvent(insertNumber);
         return;
       }
       if (this.array.includes(this.number)) {
-        this.activeModal(tableExist);
+        this.modalEvent(tableExist);
         return;
       }
       console.log(this.number);
@@ -101,7 +101,7 @@ export default {
     },
 
     //모달 이벤트
-    activeModal: function(error) {
+    modalEvent: function(error) {
       this.showToast = true;
       this.toastMsg = error;
 
@@ -120,11 +120,11 @@ export default {
       const { insertNumber, tableExist } = this.error;
 
       if (this.modalValue == null || this.modalValue.length == 0) {
-        this.activeModal(insertNumber);
+        this.modalEvent(insertNumber);
         return;
       }
       if (this.array.includes(this.modalValue)) {
-        this.activeModal(tableExist);
+        this.modalEvent(tableExist);
         return;
       }
 
