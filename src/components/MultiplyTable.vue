@@ -18,7 +18,7 @@
     </transition>
 
     <transition name="fadeDrop" appear>
-      <div v-if="showToast" class="Toast">
+      <div v-if="showToast" class="toast">
         <p class="msg">{{ toastMsg }}</p>
       </div>
     </transition>
@@ -73,34 +73,39 @@ export default {
       modalValue: null,
 
       modalIndex: null,
+
+      error: {
+        insertNumber: "숫자를 입력해주세요",
+        tableExist: "해당 단이 이미 존재합니다",
+      },
     };
   },
 
   methods: {
     //구구단 추가
     addTable: function() {
+      const { insertNumber, tableExist } = this.error;
+
       if (this.number === null || this.number.length === 0) {
-        this.showToast = true;
-        this.toastMsg = "숫자를 입력해주세요";
-
-        setTimeout(() => {
-          this.showToast = false;
-        }, 1500);
-
+        this.activeModal(insertNumber);
         return;
       }
       if (this.array.includes(this.number)) {
-        this.showToast = true;
-        this.toastMsg = "이미 해당하는 단이 존재합니다";
-
-        setTimeout(() => {
-          this.showToast = false;
-        }, 1500);
-
+        this.activeModal(tableExist);
         return;
       }
       console.log(this.number);
       this.array.push(this.number);
+    },
+
+    //모달 이벤트
+    activeModal(error) {
+      this.showToast = true;
+      this.toastMsg = error;
+
+      setTimeout(() => {
+        this.showToast = false;
+      }, 1500);
     },
 
     //구구단 삭제
@@ -110,8 +115,16 @@ export default {
 
     //구구단 수정
     changeTable: function() {
-      if (this.modalValue == null) return;
-      if (this.array.includes(this.modalValue)) return;
+      const { insertNumber, tableExist } = this.error;
+
+      if (this.modalValue == null || this.modalValue.length == 0) {
+        this.activeModal(insertNumber);
+        return;
+      }
+      if (this.array.includes(this.modalValue)) {
+        this.activeModal(tableExist);
+        return;
+      }
 
       this.array.splice(this.modalIndex, 1, this.modalValue);
 
