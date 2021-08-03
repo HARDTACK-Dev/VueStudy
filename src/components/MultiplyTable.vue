@@ -101,7 +101,7 @@ export default {
     },
 
     //모달 이벤트
-    activeModal(error) {
+    activeModal: function(error) {
       this.showToast = true;
       this.toastMsg = error;
 
