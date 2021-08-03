@@ -9,6 +9,7 @@
             class="modal-input"
             v-model="modalValue"
             @keyup.enter="changeTable"
+            @keyup.esc="showModal = false"
           />
 
           <button class="apply" @click="changeTable">적용</button>
@@ -96,6 +97,7 @@ export default {
       }
       console.log(this.number);
       this.array.push(this.number);
+      this.number = null;
     },
 
     //모달 이벤트
@@ -127,7 +129,6 @@ export default {
       }
 
       this.array.splice(this.modalIndex, 1, this.modalValue);
-
       this.closeModal = true;
     },
 

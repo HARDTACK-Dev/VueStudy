@@ -23,6 +23,34 @@
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
+.modal-title {
+  display: inline-block;
+
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 115px;
+}
+
+.modal-input {
+  display: block;
+  margin: 0 auto;
+
+  margin-top: 50px;
+
+  width: 250px;
+  height: 35px;
+
+  border-radius: 30px;
+  border: none;
+
+  background-color: rgb(233, 233, 233);
+  transition: 0.3s ease-in-out;
+}
+
+.modal-input:hover{
+  transform: scale(1.05);
+}
+
 .apply {
   color: blue;
   position: absolute;
