@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="Body">
-      <transition-group tag="div" name="plump" class="Body">
+      <transition-group tag="div" name="plump" class="body">
         <div class="card" v-for="(number, index) in array" v-bind:key="number">
           <div class="card-header flex">
             <h3 class="x-level">{{ number }}단</h3>
@@ -289,7 +289,7 @@ body {
   background-color: rgb(235, 235, 235);
 }
 
-.Body {
+.body {
   width: 100vw;
 
   display: flex;
